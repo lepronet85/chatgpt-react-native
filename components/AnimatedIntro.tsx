@@ -138,27 +138,27 @@ const AnimatedIntro = () => {
     ],
   }));
 
-  // useAnimatedReaction(
-  //   () => labelWidth.value,
-  //   (newWidth) => {
-  //     currentX.value = withDelay(
-  //       1000,
-  //       withTiming(
-  //         half + newWidth / 2,
-  //         {
-  //           duration: 800,
-  //         },
-  //         (finished) => {
-  //           if (finished) {
-  //             canGoToNext.value = true;
-  //             isAtStart.value = false;
-  //           }
-  //         }
-  //       )
-  //     );
-  //   },
-  //   [labelWidth, currentX, half]
-  // );
+  useAnimatedReaction(
+    () => labelWidth.value,
+    (newWidth) => {
+      currentX.value = withDelay(
+        1000,
+        withTiming(
+          half + newWidth / 2,
+          {
+            duration: 800,
+          },
+          (finished) => {
+            if (finished) {
+              canGoToNext.value = true;
+              isAtStart.value = false;
+            }
+          }
+        )
+      );
+    },
+    [labelWidth, currentX, half]
+  );
 
   useAnimatedReaction(
     () => canGoToNext.value,
